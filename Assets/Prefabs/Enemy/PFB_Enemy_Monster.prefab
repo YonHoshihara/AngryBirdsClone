@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8526544822019705193}
   - component: {fileID: 8526544822019705194}
   - component: {fileID: 8526544822019705195}
-  - component: {fileID: 8526544822019705191}
+  - component: {fileID: 737888616419036547}
   m_Layer: 0
   m_Name: PFB_Enemy_Monster
   m_TagString: Untagged
@@ -151,7 +151,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &8526544822019705191
+--- !u!114 &737888616419036547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -160,10 +160,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 8526544822019705196}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ed2a8f4f0175ca4c91fc0e64728215d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7626fb3fa392f8543856d818d0380984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _deadSprite: {fileID: 21300000, guid: 70a60dad9c6f2aa42941b53edf1428e9, type: 3}
+  SpriteImgRand:
+  - {fileID: 21300000, guid: 6376e65d5cd1502458f627e6f98265e4, type: 3}
+  - {fileID: 21300000, guid: 204382366f60c8043b0b6707cf9b48c1, type: 3}
+  SpriteImgRandDie:
+  - {fileID: 21300000, guid: 70a60dad9c6f2aa42941b53edf1428e9, type: 3}
+  - {fileID: 21300000, guid: a1dbad0840298534db9c6da628935e8a, type: 3}
   _particleSystem: {fileID: 8526544822723192407}
 --- !u!1 &8526544822723192410
 GameObject:
