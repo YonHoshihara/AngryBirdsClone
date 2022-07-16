@@ -25,7 +25,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 564
+  controlID: 15474
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +142,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 525
+  controlID: 15409
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -416,9 +416,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 960, y: 540, z: 0}
+    m_Target: {x: 9.64, y: 1.3749999, z: 0}
     speed: 2
-    m_Value: {x: 960, y: 540, z: 0}
+    m_Value: {x: 9.64, y: 1.3749999, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -469,9 +469,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 1101.4536
+    m_Target: 6.1941524
     speed: 2
-    m_Value: 1101.4536
+    m_Value: 6.1941524
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -610,7 +610,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 56f1ffff9cf1ffff60f3ffff0efbffff
+      m_ExpandedIDs: a2cdffff70ddffff9edeffff7eedffff52f0ffff38f1ffffbaf2ffff2cf4ffff9ef5ffff22f7ffffa6f8ffff0efbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 565
+  controlID: 15475
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -720,7 +720,7 @@ MonoBehaviour:
     m_CachedPref: -160
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
-  m_LastInspectedObjectInstanceID: 29814
+  m_LastInspectedObjectInstanceID: -6540
   m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
@@ -757,7 +757,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 24798
+  m_LastSelectedObjectID: -6540
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -813,7 +813,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
   m_SearchFilter:
-    m_NameFilter: Level
+    m_NameFilter: 
     m_ClassNames: []
     m_AssetLabels: []
     m_AssetBundleNames: []
@@ -825,22 +825,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scenes
+    - Assets/Prefabs/Obstacle
     m_Globs: []
-    m_OriginalText: Level
+    m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scenes
+  - Assets/Prefabs/Obstacle
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Jorge\Documents\repositories\AngryBirdsClone
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 73.400024}
-    m_SelectedIDs: 7c620000
-    m_LastClickedID: 25212
-    m_ExpandedIDs: 00000000386200003a6200003c62000000ca9a3b
+    m_SelectedIDs: 9a620000
+    m_LastClickedID: 25242
+    m_ExpandedIDs: 00000000586200005a6200005c62000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -868,7 +868,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000386200003a6200003c62000000ca9a3b
+    m_ExpandedIDs: 00000000586200005a6200005c62000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -893,9 +893,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 76740000
-    m_LastClickedInstanceID: 29814
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 28f0fffffeeeffff16f0ffff18eeffff74e6ffff
+    m_LastClickedInstanceID: -6540
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 000000009e860000f070000056610000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
