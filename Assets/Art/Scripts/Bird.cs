@@ -5,12 +5,14 @@ using UnityEngine;
 public class Bird : MonoBehaviour
 {
 
-    [SerializeField] private float _launchForce = 1700;
+    [SerializeField] private float _launchForce = 400;
     [SerializeField] private float _maxDragDistance = 5;
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _startPosition;
+    private int _desh=0;
+
 
     private void Awake()
     {
@@ -21,7 +23,7 @@ public class Bird : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //GetComponent<Rigidbody2D>().isKinematic = true;
+        GetComponent<Rigidbody2D>().isKinematic = true;
         _startPosition = _rigidbody2D.position;
         GetComponent<Rigidbody2D>().isKinematic = true;
   
@@ -30,7 +32,7 @@ public class Bird : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        desh();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -43,6 +45,7 @@ public class Bird : MonoBehaviour
         _rigidbody2D.position = _startPosition;
         GetComponent<Rigidbody2D>().isKinematic = true;
         _rigidbody2D.velocity = Vector2.zero;
+        _desh=0;
     }
     private void OnMouseDown()
     {
@@ -85,4 +88,18 @@ public class Bird : MonoBehaviour
 
         _rigidbody2D.position = desiredPosition;
     }
+
+     private void desh(){
+          if(Input.GetKey(KeyCode.Space) &&  _desh==0){
+            
+            // _particleSystem.Play();
+            _rigidbody2D.AddForce(transform.up* 30f, ForceMode2D.Impulse);
+            _rigidbody2D.AddForce(transform.right* 5f, ForceMode2D.Impulse);
+            _desh=1;
+         
+       
+        }
+     }
+
+
 }
