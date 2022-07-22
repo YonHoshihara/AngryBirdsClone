@@ -12,6 +12,7 @@ public class Bird : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private Vector2 _startPosition;
     private int _desh=0;
+    private bool m_isreseting = false;
 
 
     private void Awake()
@@ -36,22 +37,28 @@ public class Bird : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!m_isreseting)
+        {
+            SoundController.Instance.PlaySound(3);
+        }
         StartCoroutine(ResetAfterDelay());
 
     }
     IEnumerator ResetAfterDelay()
     {
+        m_isreseting = true;
         yield return new WaitForSeconds(3);
         _rigidbody2D.position = _startPosition;
         GetComponent<Rigidbody2D>().isKinematic = true;
         _rigidbody2D.velocity = Vector2.zero;
         _desh=0;
+        m_isreseting = false;
     }
     private void OnMouseDown()
     {
         // GetComponent<SpriteRenderer>().color = new Color(1, 0, 1);
-       // GetComponent<SpriteRenderer>().color = Color.red;
-
+        // GetComponent<SpriteRenderer>().color = Color.red;
+        SoundController.Instance.PlaySound(1);
         spriteRenderer.color = Color.red;
     }
     private void OnMouseUp()
@@ -64,6 +71,7 @@ public class Bird : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(direction * _launchForce);
 
         spriteRenderer.color = Color.white;
+        SoundController.Instance.PlaySound(0);
     }
 
     private void OnMouseDrag()
@@ -91,7 +99,7 @@ public class Bird : MonoBehaviour
 
      private void desh(){
           if(Input.GetKey(KeyCode.Space) &&  _desh==0){
-            
+            SoundController.Instance.PlaySound(0);
             // _particleSystem.Play();
             _rigidbody2D.AddForce(transform.up* 30f, ForceMode2D.Impulse);
             _rigidbody2D.AddForce(transform.right* 5f, ForceMode2D.Impulse);

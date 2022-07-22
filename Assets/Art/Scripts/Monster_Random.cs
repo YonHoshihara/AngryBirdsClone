@@ -71,11 +71,12 @@ public class Monster_Random : MonoBehaviour
 
     IEnumerator Die()
     {
+        
         _hasDied = true;
         _spriteRenderer.sprite = SpriteImgRandDie[rand];
         _particleSystem.Play();
+        SoundController.Instance.PlaySound(2);
         yield return new WaitForSeconds(1);
-
         gameObject.SetActive(false);
     }
 
