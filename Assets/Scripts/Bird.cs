@@ -7,7 +7,7 @@ public class Bird : MonoBehaviour
 
     [SerializeField] private float _launchForce = 400;
     [SerializeField] private float _maxDragDistance = 5;
-    [SerializeField] private ParticleSystem _particleSystem;
+    //[SerializeField] private ParticleSystem _particleSystem;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _startPosition;
@@ -18,7 +18,7 @@ public class Bird : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _particleSystem=GetComponent<ParticleSystem>();
+        //_particleSystem=GetComponent<ParticleSystem>();
     }
 
     // Start is called before the first frame update
@@ -47,9 +47,11 @@ public class Bird : MonoBehaviour
         GetComponent<Rigidbody2D>().isKinematic = true;
         _rigidbody2D.velocity = Vector2.zero;
         _desh=0;
+        /*
         if(_particleSystem.isPlaying){
             _particleSystem.Stop();
         }
+        */
     }
     private void OnMouseDown()
     {
@@ -67,6 +69,7 @@ public class Bird : MonoBehaviour
         GetComponent<Rigidbody2D>().isKinematic = false;
         GetComponent<Rigidbody2D>().AddForce(direction * _launchForce);
 
+        /*
         spriteRenderer.color = Color.white;
         if(!_particleSystem.isPlaying){
             _particleSystem.Play();
@@ -74,6 +77,7 @@ public class Bird : MonoBehaviour
        if(!_particleSystem.isStopped){
             _particleSystem.Play();
         }
+        */
 
     }
 
