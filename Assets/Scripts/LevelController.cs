@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] string _nextLevelName;
-     Monster[]  _monsters;
+     Monster_Random[]  _monsters;
 
     void OnEnable()
     {
         //apresenta erro!
-       _monsters = FindObjectsOfType<Monster>();
+       _monsters = FindObjectsOfType<Monster_Random>();
     }
 
 
