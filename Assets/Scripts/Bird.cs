@@ -20,6 +20,7 @@ public class Bird : MonoBehaviour
     private int _desh=0;
     private int _life=3;
     private bool _movement=false;
+    private bool _isReseting = false;
 
     private void Awake()
     {
@@ -31,9 +32,9 @@ public class Bird : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        _rigidbody2D.isKinematic = true;
         _startPosition = _rigidbody2D.position;
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        _rigidbody2D.isKinematic = true;
 
     }
 
@@ -44,6 +45,10 @@ public class Bird : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!_isReseting)
+        {
+            SoundController.Instance.PlaySound(3);
+        }
         StartCoroutine(ResetAfterDelay());
       
     }
@@ -51,36 +56,37 @@ public class Bird : MonoBehaviour
     {
         //Se o objeto player estiver parado , ele poderá realizar a sua tentativa.
          if(_movement==false){
-            Life();
+            //Life();
             _movement=true;
         }
-
+        _isReseting = true;
         yield return new WaitForSeconds(3);
         _rigidbody2D.position = _startPosition;
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        _rigidbody2D.isKinematic = true;
         _rigidbody2D.velocity = Vector2.zero;
         _desh=0;
         _movement=false;
-       
+        _isReseting = false;
+
     }
     private void OnMouseDown()
     {
         // GetComponent<SpriteRenderer>().color = new Color(1, 0, 1);
-       // GetComponent<SpriteRenderer>().color = Color.red;
-
+        // GetComponent<SpriteRenderer>().color = Color.red;
+        SoundController.Instance.PlaySound(1);
         spriteRenderer.color = Color.red;
     }
     private void OnMouseUp()
     {
-        Vector2 currentPosition = GetComponent<Rigidbody2D>().position;
+        Vector2 currentPosition = _rigidbody2D.position;
         Vector2 direction = _startPosition - currentPosition;
         direction.Normalize();
 
-        GetComponent<Rigidbody2D>().isKinematic = false;
-        GetComponent<Rigidbody2D>().AddForce(direction * _launchForce);
+        _rigidbody2D.isKinematic = false;
+        _rigidbody2D.AddForce(direction * _launchForce);
 
         spriteRenderer.color = Color.white;
-           
+        SoundController.Instance.PlaySound(0);
 
     }
 
@@ -112,6 +118,7 @@ public class Bird : MonoBehaviour
             _rigidbody2D.AddForce(transform.up* 30f, ForceMode2D.Impulse);
             _rigidbody2D.AddForce(transform.right* 5f, ForceMode2D.Impulse);
             _desh=1;
+            SoundController.Instance.PlaySound(0);
         }
      }
 
