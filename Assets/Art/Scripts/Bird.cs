@@ -1,17 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Bird : MonoBehaviour
 {
 
-    [SerializeField] private float _launchForce = 400;
-    [SerializeField] private float _maxDragDistance = 5;
+    [SerializeField] private float _launchForce = 1000;
+    [SerializeField] private float _maxDragDistance = 50;
+    [SerializeField] private Image uiBird1;
+    [SerializeField] private Image uiBird2;
+    [SerializeField] private Image uiBird3;
+    
+
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _startPosition;
     private int _desh=0;
-
+    private int _life=3;
+    private bool _movement=false;
 
     private void Awake()
     {
@@ -37,15 +45,22 @@ public class Bird : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         StartCoroutine(ResetAfterDelay());
-
+      
     }
     IEnumerator ResetAfterDelay()
     {
+        //Se o objeto player estiver parado , ele poderá realizar a sua tentativa.
+         if(_movement==false){
+            Life();
+            _movement=true;
+        }
+
         yield return new WaitForSeconds(3);
         _rigidbody2D.position = _startPosition;
         GetComponent<Rigidbody2D>().isKinematic = true;
         _rigidbody2D.velocity = Vector2.zero;
         _desh=0;
+        _movement=false;
        
     }
     private void OnMouseDown()
@@ -65,7 +80,7 @@ public class Bird : MonoBehaviour
         GetComponent<Rigidbody2D>().AddForce(direction * _launchForce);
 
         spriteRenderer.color = Color.white;
-   
+           
 
     }
 
@@ -94,14 +109,28 @@ public class Bird : MonoBehaviour
 
      private void Desh(){
           if(Input.GetKey(KeyCode.Space) &&  _desh==0){
-            
-          
             _rigidbody2D.AddForce(transform.up* 30f, ForceMode2D.Impulse);
             _rigidbody2D.AddForce(transform.right* 5f, ForceMode2D.Impulse);
             _desh=1;
-         
-       
         }
+     }
+
+
+     private void Life(){
+         _life--;
+        switch(_life){
+        case 2:uiBird3.color=Color.gray;break;
+        case 1:uiBird2.color=Color.gray;break;
+        case 0:uiBird1.color=Color.gray;
+         Invoke("LoadDefeat",4);break;  
+        }
+      
+
+     }
+
+     public void LoadDefeat(){
+        //chamando o menu , no caso alterar para a tela desejada.
+        SceneManager.LoadScene(0);
      }
 
 

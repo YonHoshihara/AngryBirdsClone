@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class BlueBird : MonoBehaviour
 {
@@ -9,13 +12,18 @@ public class BlueBird : MonoBehaviour
     [SerializeField] private float _maxDragDistance = 5;
     [SerializeField] private Rigidbody2D _eggRigidBody;
     [SerializeField] private SpriteRenderer _eggSpriteRederer;
-    
+    [SerializeField] private Image uiBird1;
+    [SerializeField] private Image uiBird2;
+    [SerializeField] private Image uiBird3;
+
+
 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _startPosition;
     private int _desh=0;
-
+    private int _life=3;
+    private bool _movement=false;
 
     private void Awake()
     {
@@ -47,12 +55,19 @@ public class BlueBird : MonoBehaviour
     }
     IEnumerator ResetAfterDelay()
     {
+
+          //Se o objeto player estiver parado , ele poderá realizar a sua tentativa.
+         if(_movement==false){
+            Life();
+            _movement=true;
+        }
         yield return new WaitForSeconds(3);
         _rigidbody2D.position = _startPosition;
         GetComponent<Rigidbody2D>().isKinematic = true;
         _rigidbody2D.velocity = Vector2.zero;
         _desh=0;
         EggReset();
+         _movement=false;
       
     }
     private void OnMouseDown()
@@ -121,5 +136,23 @@ public class BlueBird : MonoBehaviour
         _eggSpriteRederer.enabled=false;
         _eggRigidBody.simulated=false;
     }
+
+
+      private void Life(){
+         _life--;
+        switch(_life){
+        case 2:uiBird3.color=Color.gray;break;
+        case 1:uiBird2.color=Color.gray;break;
+        case 0:uiBird1.color=Color.gray;
+         Invoke("LoadDefeat",4);break;  
+        }
+      
+
+     }
+
+     public void LoadDefeat(){
+        //chamando o menu , no caso alterar para a tela desejada.
+        SceneManager.LoadScene(0);
+     }
    
 }
