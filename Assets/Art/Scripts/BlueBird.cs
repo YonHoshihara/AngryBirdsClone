@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bird : MonoBehaviour
+public class BlueBird : MonoBehaviour
 {
 
     [SerializeField] private float _launchForce = 400;
     [SerializeField] private float _maxDragDistance = 5;
+    [SerializeField] private Rigidbody2D _eggRigidBody;
+    [SerializeField] private SpriteRenderer _eggSpriteRederer;
+    
+
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _startPosition;
@@ -37,6 +41,8 @@ public class Bird : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         StartCoroutine(ResetAfterDelay());
+        
+
 
     }
     IEnumerator ResetAfterDelay()
@@ -46,7 +52,8 @@ public class Bird : MonoBehaviour
         GetComponent<Rigidbody2D>().isKinematic = true;
         _rigidbody2D.velocity = Vector2.zero;
         _desh=0;
-       
+        EggReset();
+      
     }
     private void OnMouseDown()
     {
@@ -93,16 +100,26 @@ public class Bird : MonoBehaviour
     }
 
      private void Desh(){
-          if(Input.GetKey(KeyCode.Space) &&  _desh==0){
-            
-          
+          if(Input.GetKey(KeyCode.Space) &&  _desh==0 && _rigidbody2D.isKinematic==false){
             _rigidbody2D.AddForce(transform.up* 30f, ForceMode2D.Impulse);
             _rigidbody2D.AddForce(transform.right* 5f, ForceMode2D.Impulse);
             _desh=1;
-         
+            EggDrop();
        
         }
      }
 
+     private void EggDrop(){
+        _eggRigidBody.transform.position= _rigidbody2D.position;
+        _eggSpriteRederer.enabled=true;
+        _eggRigidBody.simulated=true;
+        _eggRigidBody.AddForce(transform.up* -8f, ForceMode2D.Impulse);
+     }
 
+
+    private void EggReset(){
+        _eggSpriteRederer.enabled=false;
+        _eggRigidBody.simulated=false;
+    }
+   
 }
