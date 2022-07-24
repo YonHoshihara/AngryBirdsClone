@@ -5,8 +5,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
-    [SerializeField] string _nextLevelName;
-     Monster_Random[]  _monsters;
+    [SerializeField] 
+    string _nextLevelName;
+    private Monster_Random[]  _monsters;
+    private bool m_LevelClear = false;
 
     void OnEnable()
     {
@@ -17,14 +19,16 @@ public class LevelController : MonoBehaviour
 
     void Update()
     {
-        if(MonsterAreAllDead())
+        if(MonsterAreAllDead() && !m_LevelClear)
         {
+            m_LevelClear = true;
             GoToNextLevel();
         }
     }
 
     void GoToNextLevel()
     {
+        //ScreenController.Instance.CallNewScreen((int)ScreenController.m_Screens.WinScreen);
         Debug.Log("Go to Level" + _nextLevelName);
         SceneManager.LoadScene(_nextLevelName);
     }
