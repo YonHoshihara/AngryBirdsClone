@@ -588,7 +588,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5342927285177649684, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.884642
+      value: 4.8846426
       objectReference: {fileID: 0}
     - target: {fileID: 5342927285177649684, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -604,7 +604,7 @@ PrefabInstance:
       objectReference: {fileID: 1500864094}
     - target: {fileID: 5342927285508400926, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.884642
+      value: 4.8846426
       objectReference: {fileID: 0}
     - target: {fileID: 5342927285508400926, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -701,6 +701,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 737888616419036547, guid: 629bddb3cea25814daec4acca6934315, type: 3}
+      propertyPath: _enemyDamage
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8526544822019705192, guid: 629bddb3cea25814daec4acca6934315, type: 3}
       propertyPath: m_RootOrder
       value: 8

@@ -7,11 +7,13 @@ public class LevelController : MonoBehaviour
 {
     [SerializeField] string _nextLevelName;
      Monster_Random[]  _monsters;
+     Monster_Boss[] _monsterBoss;
 
     void OnEnable()
     {
         //apresenta erro!
        _monsters = FindObjectsOfType<Monster_Random>();
+       _monsterBoss = FindObjectsOfType<Monster_Boss>();
     }
 
 
@@ -34,6 +36,13 @@ public class LevelController : MonoBehaviour
         foreach (var monster in _monsters)
         {
             if (monster.gameObject.activeSelf)
+            {
+                return false;
+            }
+        }
+        foreach (var monsterBoss in _monsterBoss)
+        {
+            if (monsterBoss.gameObject.activeSelf)
             {
                 return false;
             }
