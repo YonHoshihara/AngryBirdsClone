@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2677850850077888954
 RectTransform:
   m_ObjectHideFlags: 0
@@ -112,6 +112,7 @@ GameObject:
   - component: {fileID: 2677850850784534465}
   - component: {fileID: 2677850850784534466}
   - component: {fileID: 2677850850784534467}
+  - component: {fileID: 736504362}
   m_Layer: 5
   m_Name: Retry_Button
   m_TagString: Untagged
@@ -128,7 +129,7 @@ RectTransform:
   m_GameObject: {fileID: 2677850850784534477}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 3, z: 13}
+  m_LocalScale: {x: 1.25, y: 2.5, z: 13}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2677850850077888954}
@@ -220,7 +221,33 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2677850850784534466}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 736504362}
+        m_TargetAssemblyTypeName: LoadSceneButton, Assembly-CSharp
+        m_MethodName: LoadNewSceneByName
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &736504362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2677850850784534477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55ccebce09e763445805b868c8395a43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId: 0
+  m_SceneName: Level1
 --- !u!1 &2677850851145494956
 GameObject:
   m_ObjectHideFlags: 0

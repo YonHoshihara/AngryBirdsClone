@@ -28,8 +28,6 @@ public class LevelController : MonoBehaviour
 
     void GoToNextLevel()
     {
-        //ScreenController.Instance.CallNewScreen((int)ScreenController.m_Screens.WinScreen);
-        Debug.Log("Go to Level" + _nextLevelName);
         SceneManager.LoadScene(_nextLevelName);
     }
 

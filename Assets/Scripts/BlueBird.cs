@@ -12,12 +12,7 @@ public class BlueBird : MonoBehaviour
     [SerializeField] private float _maxDragDistance = 5;
     [SerializeField] private Rigidbody2D _eggRigidBody;
     [SerializeField] private SpriteRenderer _eggSpriteRederer;
-    [SerializeField] private Image uiBird1;
-    [SerializeField] private Image uiBird2;
-    [SerializeField] private Image uiBird3;
-
-
-
+    
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _startPosition;
@@ -56,17 +51,15 @@ public class BlueBird : MonoBehaviour
         }
         
         StartCoroutine(ResetAfterDelay());
-        
-
-
     }
+
     IEnumerator ResetAfterDelay()
     {
 
           //Se o objeto player estiver parado , ele poderá realizar a sua tentativa.
          if(_movement==false){
-           // Life();
-            _movement=true;
+            LifeController.Instance.Life();
+            _movement =true;
         }
         _isReseting = true;
         yield return new WaitForSeconds(3);
@@ -140,22 +133,4 @@ public class BlueBird : MonoBehaviour
         _eggRigidBody.simulated=false;
     }
 
-
-      private void Life(){
-         _life--;
-        switch(_life){
-        case 2:uiBird3.color=Color.gray;break;
-        case 1:uiBird2.color=Color.gray;break;
-        case 0:uiBird1.color=Color.gray;
-         Invoke("LoadDefeat",4);break;  
-        }
-      
-
-     }
-
-     public void LoadDefeat(){
-        //chamando o menu , no caso alterar para a tela desejada.
-        SceneManager.LoadScene(0);
-     }
-   
 }

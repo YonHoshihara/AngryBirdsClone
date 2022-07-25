@@ -9,16 +9,11 @@ public class Bird : MonoBehaviour
 
     [SerializeField] private float _launchForce = 1000;
     [SerializeField] private float _maxDragDistance = 50;
-    [SerializeField] private Image uiBird1;
-    [SerializeField] private Image uiBird2;
-    [SerializeField] private Image uiBird3;
-    
-
+ 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _startPosition;
     private int _desh=0;
-    private int _life=3;
     private bool _movement=false;
     private bool _isReseting = false;
 
@@ -35,7 +30,6 @@ public class Bird : MonoBehaviour
         _rigidbody2D.isKinematic = true;
         _startPosition = _rigidbody2D.position;
         _rigidbody2D.isKinematic = true;
-
     }
 
     // Update is called once per frame
@@ -82,7 +76,7 @@ public class Bird : MonoBehaviour
 
         _rigidbody2D.isKinematic = false;
         _rigidbody2D.AddForce(direction * _launchForce);
-
+        LifeController.Instance.Life();
         spriteRenderer.color = Color.white;
         SoundController.Instance.PlaySound(0);
 
@@ -118,24 +112,4 @@ public class Bird : MonoBehaviour
             SoundController.Instance.PlaySound(0);
         }
      }
-
-
-     private void Life(){
-         _life--;
-        switch(_life){
-        case 2:uiBird3.color=Color.gray;break;
-        case 1:uiBird2.color=Color.gray;break;
-        case 0:uiBird1.color=Color.gray;
-         Invoke("LoadDefeat",4);break;  
-        }
-      
-
-     }
-
-     public void LoadDefeat(){
-        //chamando o menu , no caso alterar para a tela desejada.
-        SceneManager.LoadScene(0);
-     }
-
-
 }
