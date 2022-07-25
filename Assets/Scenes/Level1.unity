@@ -710,7 +710,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5342927285177649684, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.8846426
+      value: 4.884642
       objectReference: {fileID: 0}
     - target: {fileID: 5342927285177649684, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -726,7 +726,7 @@ PrefabInstance:
       objectReference: {fileID: 952036701}
     - target: {fileID: 5342927285508400926, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.8846426
+      value: 4.884642
       objectReference: {fileID: 0}
     - target: {fileID: 5342927285508400926, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -927,10 +927,6 @@ PrefabInstance:
     - target: {fileID: 671099968515374846, guid: ac4ef54c3e222a24ab925929c4d3f4dd, type: 3}
       propertyPath: m_Name
       value: PFB_Utils_ScreenController
-      objectReference: {fileID: 0}
-    - target: {fileID: 3204762985082066702, guid: ac4ef54c3e222a24ab925929c4d3f4dd, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac4ef54c3e222a24ab925929c4d3f4dd, type: 3}
