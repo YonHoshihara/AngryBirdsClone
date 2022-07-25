@@ -71,8 +71,6 @@ public class Bird : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        // GetComponent<SpriteRenderer>().color = new Color(1, 0, 1);
-        // GetComponent<SpriteRenderer>().color = Color.red;
         SoundController.Instance.PlaySound(1);
         spriteRenderer.color = Color.red;
     }
@@ -93,7 +91,6 @@ public class Bird : MonoBehaviour
     private void OnMouseDrag()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //transform.position = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
         Vector2 desiredPosition = mousePosition;
 
         float distance = Vector2.Distance(desiredPosition, _startPosition);

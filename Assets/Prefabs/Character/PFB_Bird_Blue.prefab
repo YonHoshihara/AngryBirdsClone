@@ -223,7 +223,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _launchForce: 800
   _maxDragDistance: 5
-  _eggRigidBody: {fileID: 218147098}
+  _eggRigidBody: {fileID: 963684232277215464}
   _eggSpriteRederer: {fileID: 8308661665607672795}
   uiBird1: {fileID: 0}
   uiBird2: {fileID: 0}
@@ -283,108 +283,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_Bird_Egg
       objectReference: {fileID: 0}
-    - target: {fileID: 8308661667411871840, guid: 9666c692acac46c408f93b1d351b6993, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9666c692acac46c408f93b1d351b6993, type: 3}
+--- !u!50 &963684232277215464 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 963684233963463507, guid: 9666c692acac46c408f93b1d351b6993, type: 3}
+  m_PrefabInstance: {fileID: 1838033851}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1004169550902760283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1004169550140061920, guid: 9666c692acac46c408f93b1d351b6993, type: 3}
   m_PrefabInstance: {fileID: 1838033851}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5756099909701685840 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5756099908014930411, guid: 9666c692acac46c408f93b1d351b6993, type: 3}
-  m_PrefabInstance: {fileID: 1838033851}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &218147098
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5756099909701685840}
-  m_BodyType: 0
-  m_Simulated: 0
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!60 &6085500736071950779
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5756099909701685840}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 0.296875, y: -0.4140625}
-      - {x: 0.3984375, y: -0.3125}
-      - {x: 0.43359375, y: -0.26171875}
-      - {x: 0.46875, y: -0.1875}
-      - {x: 0.48828125, y: -0.14453125}
-      - {x: 0.5, y: -0.07421875}
-      - {x: 0.5, y: 0.08203125}
-      - {x: 0.4921875, y: 0.11328125}
-      - {x: 0.46875, y: 0.1953125}
-      - {x: 0.42578125, y: 0.2734375}
-      - {x: 0.3984375, y: 0.3125}
-      - {x: 0.33984375, y: 0.375}
-      - {x: 0.26171875, y: 0.43359375}
-      - {x: 0.17578125, y: 0.4765625}
-      - {x: 0.1328125, y: 0.4921875}
-      - {x: 0.0859375, y: 0.5}
-      - {x: -0.07421875, y: 0.5}
-      - {x: -0.11328125, y: 0.49609375}
-      - {x: -0.1953125, y: 0.46875}
-      - {x: -0.2734375, y: 0.4296875}
-      - {x: -0.33984375, y: 0.375}
-      - {x: -0.37890625, y: 0.33984375}
-      - {x: -0.43359375, y: 0.26171875}
-      - {x: -0.4765625, y: 0.1796875}
-      - {x: -0.5, y: 0.09765625}
-      - {x: -0.5, y: -0.08203125}
-      - {x: -0.484375, y: -0.14453125}
-      - {x: -0.46484375, y: -0.1953125}
-      - {x: -0.42578125, y: -0.2734375}
-      - {x: -0.3984375, y: -0.3125}
-      - {x: -0.33984375, y: -0.37890625}
-      - {x: -0.26171875, y: -0.43359375}
-      - {x: -0.1953125, y: -0.46484375}
-      - {x: -0.15625, y: -0.484375}
-      - {x: -0.09375, y: -0.49609375}
-      - {x: -0.078125, y: -0.5}
-      - {x: 0.0703125, y: -0.5}
-      - {x: 0.09375, y: -0.49609375}
-      - {x: 0.14453125, y: -0.484375}
-      - {x: 0.19921875, y: -0.46875}
 --- !u!212 &8308661665607672795 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 8308661667411871840, guid: 9666c692acac46c408f93b1d351b6993, type: 3}

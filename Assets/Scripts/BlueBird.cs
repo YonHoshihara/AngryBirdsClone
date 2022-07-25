@@ -24,6 +24,8 @@ public class BlueBird : MonoBehaviour
     private int _desh=0;
     private int _life=3;
     private bool _movement=false;
+    private bool _isReseting = false;
+
 
     private void Awake()
     {
@@ -48,6 +50,11 @@ public class BlueBird : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!_isReseting)
+        {
+            SoundController.Instance.PlaySound(3);
+        }
+        
         StartCoroutine(ResetAfterDelay());
         
 
@@ -61,7 +68,9 @@ public class BlueBird : MonoBehaviour
            // Life();
             _movement=true;
         }
+        _isReseting = true;
         yield return new WaitForSeconds(3);
+        _isReseting = false;
         _rigidbody2D.position = _startPosition;
         _rigidbody2D.isKinematic = true;
         _rigidbody2D.velocity = Vector2.zero;
@@ -72,9 +81,7 @@ public class BlueBird : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        // GetComponent<SpriteRenderer>().color = new Color(1, 0, 1);
-       // GetComponent<SpriteRenderer>().color = Color.red;
-
+        SoundController.Instance.PlaySound(1);
         spriteRenderer.color = Color.red;
     }
     private void OnMouseUp()
@@ -82,19 +89,15 @@ public class BlueBird : MonoBehaviour
         Vector2 currentPosition = _rigidbody2D.position;
         Vector2 direction = _startPosition - currentPosition;
         direction.Normalize();
-
         _rigidbody2D.isKinematic = false;
         _rigidbody2D.AddForce(direction * _launchForce);
-
         spriteRenderer.color = Color.white;
-   
-
+        SoundController.Instance.PlaySound(0);
     }
 
     private void OnMouseDrag()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //transform.position = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
         Vector2 desiredPosition = mousePosition;
 
         float distance = Vector2.Distance(desiredPosition, _startPosition);
@@ -119,8 +122,8 @@ public class BlueBird : MonoBehaviour
             _rigidbody2D.AddForce(transform.up* 30f, ForceMode2D.Impulse);
             _rigidbody2D.AddForce(transform.right* 5f, ForceMode2D.Impulse);
             _desh=1;
+            SoundController.Instance.PlaySound(0);
             EggDrop();
-       
         }
      }
 
