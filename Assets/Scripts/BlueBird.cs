@@ -35,9 +35,9 @@ public class BlueBird : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        _rigidbody2D.isKinematic = true;
         _startPosition = _rigidbody2D.position;
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        _rigidbody2D.isKinematic = true;
 
     }
 
@@ -58,12 +58,12 @@ public class BlueBird : MonoBehaviour
 
           //Se o objeto player estiver parado , ele poderá realizar a sua tentativa.
          if(_movement==false){
-            Life();
+           // Life();
             _movement=true;
         }
         yield return new WaitForSeconds(3);
         _rigidbody2D.position = _startPosition;
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        _rigidbody2D.isKinematic = true;
         _rigidbody2D.velocity = Vector2.zero;
         _desh=0;
         EggReset();
@@ -79,12 +79,12 @@ public class BlueBird : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        Vector2 currentPosition = GetComponent<Rigidbody2D>().position;
+        Vector2 currentPosition = _rigidbody2D.position;
         Vector2 direction = _startPosition - currentPosition;
         direction.Normalize();
 
-        GetComponent<Rigidbody2D>().isKinematic = false;
-        GetComponent<Rigidbody2D>().AddForce(direction * _launchForce);
+        _rigidbody2D.isKinematic = false;
+        _rigidbody2D.AddForce(direction * _launchForce);
 
         spriteRenderer.color = Color.white;
    

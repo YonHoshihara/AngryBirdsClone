@@ -646,6 +646,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PFB_Bird_Red
       objectReference: {fileID: 0}
+    - target: {fileID: 5086263186363140751, guid: 0c76c0f34971033449be5f69a131842c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c76c0f34971033449be5f69a131842c, type: 3}
 --- !u!4 &1198405717 stripped
@@ -710,7 +714,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5342927285177649684, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.884642
+      value: 4.8846426
       objectReference: {fileID: 0}
     - target: {fileID: 5342927285177649684, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -726,7 +730,7 @@ PrefabInstance:
       objectReference: {fileID: 952036701}
     - target: {fileID: 5342927285508400926, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.884642
+      value: 4.8846426
       objectReference: {fileID: 0}
     - target: {fileID: 5342927285508400926, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -759,6 +763,63 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 5342927285177649899, guid: 76f522bf173c32143abdb898d5c8824a, type: 3}
   m_PrefabInstance: {fileID: 1499207704}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1619952300
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2184293384857017270, guid: d1258817172f02843b5de972f4adbe49, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184293384857017270, guid: d1258817172f02843b5de972f4adbe49, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184293384857017270, guid: d1258817172f02843b5de972f4adbe49, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184293384857017270, guid: d1258817172f02843b5de972f4adbe49, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184293384857017270, guid: d1258817172f02843b5de972f4adbe49, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9999213
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184293384857017270, guid: d1258817172f02843b5de972f4adbe49, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184293384857017270, guid: d1258817172f02843b5de972f4adbe49, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184293384857017270, guid: d1258817172f02843b5de972f4adbe49, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.012549016
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184293384857017270, guid: d1258817172f02843b5de972f4adbe49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184293384857017270, guid: d1258817172f02843b5de972f4adbe49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184293384857017270, guid: d1258817172f02843b5de972f4adbe49, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1.438
+      objectReference: {fileID: 0}
+    - target: {fileID: 2184293384857017275, guid: d1258817172f02843b5de972f4adbe49, type: 3}
+      propertyPath: m_Name
+      value: PFB_Bird_Blue
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d1258817172f02843b5de972f4adbe49, type: 3}
 --- !u!1001 &1942858789
 PrefabInstance:
   m_ObjectHideFlags: 0
