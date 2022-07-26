@@ -7,9 +7,14 @@ using UnityEngine.UI;
 public class Bird : MonoBehaviour
 {
 
-    [SerializeField] private float _launchForce = 1000;
-    [SerializeField] private float _maxDragDistance = 50;
- 
+    [SerializeField] 
+    private float _launchForce = 1000;
+    
+    [SerializeField] 
+    private float _maxDragDistance = 50;
+    
+
+    private Animator _animator;
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _startPosition;
@@ -21,6 +26,7 @@ public class Bird : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponent<Animator>();
         
     }
 
@@ -55,6 +61,7 @@ public class Bird : MonoBehaviour
         }
         _isReseting = true;
         yield return new WaitForSeconds(3);
+        _animator.SetBool("Shoot", false);
         _rigidbody2D.position = _startPosition;
         _rigidbody2D.isKinematic = true;
         _rigidbody2D.velocity = Vector2.zero;
@@ -73,7 +80,7 @@ public class Bird : MonoBehaviour
         Vector2 currentPosition = _rigidbody2D.position;
         Vector2 direction = _startPosition - currentPosition;
         direction.Normalize();
-
+        _animator.SetBool("Shoot",true);
         _rigidbody2D.isKinematic = false;
         _rigidbody2D.AddForce(direction * _launchForce);
         LifeController.Instance.Life();

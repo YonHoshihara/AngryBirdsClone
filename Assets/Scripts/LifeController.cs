@@ -12,9 +12,13 @@ public class LifeController : MonoBehaviour
     [SerializeField]
     private float m_DelayToCallGameOver;
 
+    [SerializeField]
     private Image uiBird1;
+    [SerializeField]
     private Image uiBird2;
+    [SerializeField]
     private Image uiBird3;
+
     private Monster_Random[] _monsters;
     private bool m_LevelClear = false;
     private bool m_PlayerWin = false;
@@ -55,7 +59,6 @@ public class LifeController : MonoBehaviour
         {
             m_PlayerWin = true;
             ScreenController.Instance.CallNewScreen((int)ScreenController.m_Screens.WinScreen);
-            Debug.Log("player Win");
         }
 
         if (!m_PlayerWin)
@@ -63,13 +66,14 @@ public class LifeController : MonoBehaviour
             switch (_life)
             {
                 case 2:
-                    //uiBird3.color = Color.gray; 
+                    uiBird3.color = Color.gray; 
                     break;
                 case 1:
-                    //uiBird2.color = Color.gray; 
+                    uiBird2.color = Color.gray; 
                     break;
                 case 0:
-                    //uiBird1.color = Color.gray;
+                    uiBird1.color = Color.gray;
+                    m_LevelClear = true;
                     Invoke("LoadDefeat", m_DelayToCallGameOver);
                     break;
             }
@@ -97,6 +101,12 @@ public class LifeController : MonoBehaviour
     public bool GetPlayerWinStatus() {
     
         return m_PlayerWin;
+   
+    }
+
+       public bool GetlevelClearStatus() {
     
+        return m_LevelClear;
+   
     }
 }
