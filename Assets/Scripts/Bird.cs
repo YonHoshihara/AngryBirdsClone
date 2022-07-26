@@ -1,83 +1,90 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Bird : MonoBehaviour
 {
 
-    [SerializeField] private float _launchForce = 400;
-    [SerializeField] private float _maxDragDistance = 5;
-
+    [SerializeField] private float _launchForce = 1000;
+    [SerializeField] private float _maxDragDistance = 50;
+ 
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D _rigidbody2D;
     private Vector2 _startPosition;
     private int _desh=0;
-    private bool m_isreseting = false;
-
+    private bool _movement=false;
+    private bool _isReseting = false;
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        _rigidbody2D.isKinematic = true;
         _startPosition = _rigidbody2D.position;
-        GetComponent<Rigidbody2D>().isKinematic = true;
-  
+        _rigidbody2D.isKinematic = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        desh();
+        Desh();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!m_isreseting)
+        if (!_isReseting)
         {
             SoundController.Instance.PlaySound(3);
         }
         StartCoroutine(ResetAfterDelay());
-
+      
     }
     IEnumerator ResetAfterDelay()
     {
-        m_isreseting = true;
+        //Se o objeto player estiver parado , ele poderá realizar a sua tentativa.
+         if(_movement==false){
+            //Life();
+            _movement=true;
+        }
+        _isReseting = true;
         yield return new WaitForSeconds(3);
         _rigidbody2D.position = _startPosition;
-        GetComponent<Rigidbody2D>().isKinematic = true;
+        _rigidbody2D.isKinematic = true;
         _rigidbody2D.velocity = Vector2.zero;
         _desh=0;
-        m_isreseting = false;
+        _movement=false;
+        _isReseting = false;
+
     }
     private void OnMouseDown()
     {
-        // GetComponent<SpriteRenderer>().color = new Color(1, 0, 1);
-        // GetComponent<SpriteRenderer>().color = Color.red;
         SoundController.Instance.PlaySound(1);
         spriteRenderer.color = Color.red;
     }
     private void OnMouseUp()
     {
-        Vector2 currentPosition = GetComponent<Rigidbody2D>().position;
+        Vector2 currentPosition = _rigidbody2D.position;
         Vector2 direction = _startPosition - currentPosition;
         direction.Normalize();
 
-        GetComponent<Rigidbody2D>().isKinematic = false;
-        GetComponent<Rigidbody2D>().AddForce(direction * _launchForce);
-
+        _rigidbody2D.isKinematic = false;
+        _rigidbody2D.AddForce(direction * _launchForce);
+        LifeController.Instance.Life();
         spriteRenderer.color = Color.white;
         SoundController.Instance.PlaySound(0);
+
     }
 
     private void OnMouseDrag()
     {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        //transform.position = new Vector3(mousePosition.x, mousePosition.y, transform.position.z);
         Vector2 desiredPosition = mousePosition;
 
         float distance = Vector2.Distance(desiredPosition, _startPosition);
@@ -97,17 +104,12 @@ public class Bird : MonoBehaviour
         _rigidbody2D.position = desiredPosition;
     }
 
-     private void desh(){
+     private void Desh(){
           if(Input.GetKey(KeyCode.Space) &&  _desh==0){
-            SoundController.Instance.PlaySound(0);
-            // _particleSystem.Play();
             _rigidbody2D.AddForce(transform.up* 30f, ForceMode2D.Impulse);
             _rigidbody2D.AddForce(transform.right* 5f, ForceMode2D.Impulse);
             _desh=1;
-         
-       
+            SoundController.Instance.PlaySound(0);
         }
      }
-
-
 }

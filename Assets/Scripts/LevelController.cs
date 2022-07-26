@@ -5,29 +5,29 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour
 {
-    [SerializeField] string _nextLevelName;
-     Monster_Random[]  _monsters;
-     Monster_Boss[] _monsterBoss;
+    [SerializeField] 
+    string _nextLevelName;
+    private Monster_Random[]  _monsters;
+    private bool m_LevelClear = false;
 
     void OnEnable()
     {
         //apresenta erro!
        _monsters = FindObjectsOfType<Monster_Random>();
-       _monsterBoss = FindObjectsOfType<Monster_Boss>();
     }
 
 
     void Update()
     {
-        if(MonsterAreAllDead())
+        if(MonsterAreAllDead() && !m_LevelClear)
         {
+            m_LevelClear = true;
             GoToNextLevel();
         }
     }
 
     void GoToNextLevel()
     {
-        Debug.Log("Go to Level" + _nextLevelName);
         SceneManager.LoadScene(_nextLevelName);
     }
 
@@ -36,13 +36,6 @@ public class LevelController : MonoBehaviour
         foreach (var monster in _monsters)
         {
             if (monster.gameObject.activeSelf)
-            {
-                return false;
-            }
-        }
-        foreach (var monsterBoss in _monsterBoss)
-        {
-            if (monsterBoss.gameObject.activeSelf)
             {
                 return false;
             }
