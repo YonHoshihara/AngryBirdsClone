@@ -5,45 +5,28 @@ using UnityEngine;
 [SelectionBase]
 public class Monster_Random : MonoBehaviour
 {
-    private SpriteRenderer _spriteRenderer;
-    private PolygonCollider2D _polygonCollider;
-    private int rand;
-    public Sprite[] SpriteImgRand;
-    public Sprite[] SpriteImgRandDie;
 
-    [SerializeField] ParticleSystem _particleSystem;
+    [SerializeField] private float _enemyDamage;
     bool _hasDied = false;
+    public Animator monsterAnim;
+    public SpriteRenderer spriteMonster;
 
     void Awake()
     {
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _polygonCollider = GetComponent<PolygonCollider2D>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rand = Random.Range(0, SpriteImgRand.Length);
-        _spriteRenderer.sprite = SpriteImgRand[rand];
-        if (rand > 0) {
-            _polygonCollider.pathCount = SpriteImgRand[rand].GetPhysicsShapeCount();
-            List<Vector2> path = new List<Vector2>();
-            for (int i = 0; i < _polygonCollider.pathCount; i++)
-            { 
-                path.Clear();
-                SpriteImgRand[rand].GetPhysicsShape(i, path);
-                _polygonCollider.SetPath(i, path.ToArray());
-            }
-
-        }
-
+        spriteMonster = GetComponent<SpriteRenderer>(); 
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (ShouldDieFromCollision(collision))
         {
-            StartCoroutine(Die());
+            _enemyDamage -= 1;
+            //MonsterAnimator("MonsterAnimHit");
+
+            if (_enemyDamage == 0)
+            {
+                StartCoroutine(Die());
+            }
         }
 
     }
@@ -64,6 +47,7 @@ public class Monster_Random : MonoBehaviour
 
         if (collision.contacts[0].normal.y < -0.5)
         {
+            StartCoroutine(waitColor());
             return true;
         }
         return false;
@@ -71,13 +55,24 @@ public class Monster_Random : MonoBehaviour
 
     IEnumerator Die()
     {
-        
         _hasDied = true;
-        _spriteRenderer.sprite = SpriteImgRandDie[rand];
-        _particleSystem.Play();
+        MonsterAnimator("MonsterAnimDie");
         SoundController.Instance.PlaySound(2);
         yield return new WaitForSeconds(1);
+
         gameObject.SetActive(false);
+    }
+
+    void MonsterAnimator(string aMonster)
+    {
+        monsterAnim.Play(aMonster);
+    }
+
+    IEnumerator waitColor()
+    {
+        spriteMonster.color = Color.red;
+        yield return new WaitForSeconds(2);
+        spriteMonster.color = Color.white;
     }
 
 }
