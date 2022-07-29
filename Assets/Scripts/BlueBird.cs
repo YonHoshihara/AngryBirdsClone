@@ -20,13 +20,16 @@ public class BlueBird : MonoBehaviour
     private int _life=3;
     private bool _movement=false;
     private bool _isReseting = false;
+    private Animator _animator;
 
 
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        
+        _animator = GetComponent<Animator>();
+
+
     }
 
     // Start is called before the first frame update
@@ -61,6 +64,7 @@ public class BlueBird : MonoBehaviour
             LifeController.Instance.Life();
             _movement =true;
         }
+        _animator.SetBool("Shoot", false);
         _isReseting = true;
         yield return new WaitForSeconds(3);
         _isReseting = false;
@@ -82,6 +86,7 @@ public class BlueBird : MonoBehaviour
         Vector2 currentPosition = _rigidbody2D.position;
         Vector2 direction = _startPosition - currentPosition;
         direction.Normalize();
+        _animator.SetBool("Shoot", true);
         _rigidbody2D.isKinematic = false;
         _rigidbody2D.AddForce(direction * _launchForce);
         spriteRenderer.color = Color.white;
