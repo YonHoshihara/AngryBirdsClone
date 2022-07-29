@@ -68,6 +68,11 @@ public class Monster_Random : MonoBehaviour
         monsterAnim.Play(aMonster);
     }
 
+    public void Kill()
+    {
+        _enemyDamage = 0;
+        StartCoroutine(Die());
+    }
     IEnumerator waitColor()
     {
         spriteMonster.color = Color.red;

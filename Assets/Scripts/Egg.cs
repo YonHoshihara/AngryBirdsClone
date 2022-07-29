@@ -27,9 +27,8 @@ public class Egg : MonoBehaviour
     Invoke("reset",3);
      
     }
-    
      
-   }
+    }
     private void Explode()
     {
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, m_ExplosionRadius);
@@ -41,7 +40,16 @@ public class Egg : MonoBehaviour
                 Vector2 direction = obj.transform.position - transform.position;
                 obj.GetComponent<Rigidbody2D>().AddForce(direction * m_ExplosionForce);
             }
+
+            if (obj.gameObject.tag == "Enemy")
+            {
+                Vector2 direction = obj.transform.position - transform.position;
+                obj.GetComponent<Rigidbody2D>().AddForce(direction * m_ExplosionForce);
+                obj.GetComponent<Monster_Random>().Kill();
+            }
         }
+
+        SoundController.Instance.PlaySound(4);
     }
     
 }

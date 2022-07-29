@@ -13,11 +13,13 @@ public class LoadSceneButton : MonoBehaviour
 
     public void LoadNewSceneById()
     {
+        SoundController.Instance.PlaySound(5);
         SceneManager.LoadScene(m_SceneId);
     }
 
     public void LoadNewSceneByName()
     {
+        SoundController.Instance.PlaySound(5);
         SceneManager.LoadScene(m_SceneName);
     }
 

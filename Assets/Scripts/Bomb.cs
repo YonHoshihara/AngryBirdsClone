@@ -47,7 +47,15 @@ public class Bomb : MonoBehaviour
                 Vector2 direction = obj.transform.position - transform.position;
                 obj.GetComponent<Rigidbody2D>().AddForce(direction * m_ExplosionForce);
             }
+
+            if (obj.gameObject.tag == "Enemy")
+            {
+                Vector2 direction = obj.transform.position - transform.position;
+                obj.GetComponent<Rigidbody2D>().AddForce(direction * m_ExplosionForce);
+                obj.GetComponent<Monster_Random>().Kill();
+            }
         }
+        SoundController.Instance.PlaySound(4);
     }
 
     IEnumerator CallExplosion()
