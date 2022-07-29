@@ -22,6 +22,8 @@ public class LifeController : MonoBehaviour
     private Monster_Random[] _monsters;
     private bool m_LevelClear = false;
     private bool m_PlayerWin = false;
+    [SerializeField]
+    private Monster_Boss m_Boss;
     public static LifeController Instance { get; private set; }
 
     private void Awake()
@@ -36,6 +38,11 @@ public class LifeController : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+      
+    }
+
     private void OnEnable()
     {
         _monsters = FindObjectsOfType<Monster_Random>();
@@ -43,12 +50,15 @@ public class LifeController : MonoBehaviour
 
     private void Update()
     {
+      
+        
         if (MonsterAreAllDead() && !m_LevelClear)
         {
             m_LevelClear = true;
             m_PlayerWin = true;
             ScreenController.Instance.CallNewScreen((int)ScreenController.m_Screens.WinScreen);
         }
+
     }
 
     public void Life()
@@ -61,6 +71,7 @@ public class LifeController : MonoBehaviour
             ScreenController.Instance.CallNewScreen((int)ScreenController.m_Screens.WinScreen);
         }
 
+        
         if (!m_PlayerWin)
         {
             switch (_life)
@@ -83,19 +94,45 @@ public class LifeController : MonoBehaviour
 
     bool MonsterAreAllDead()
     {
-        foreach (var monster in _monsters)
+
+        if (m_Boss)
         {
-            if (monster.gameObject.activeSelf)
+            if (!m_Boss.GetDieStatus())
             {
                 return false;
             }
         }
+        else
+        {
+            foreach (var monster in _monsters)
+            {
+                if (monster.gameObject.activeSelf)
+                {
+                    return false;
+                }
+            }
+        }
+       
+        return true;
+    }
+
+    private bool CheckBossDeath()
+    {
+        if (m_Boss != null && !m_Boss.GetDieStatus())
+        {
+            return false;
+        }
+
         return true;
     }
 
     public void LoadDefeat()
     {
-        ScreenController.Instance.CallNewScreen((int) ScreenController.m_Screens.GameOverScreen);
+        if (!m_PlayerWin)
+        {
+            ScreenController.Instance.CallNewScreen((int)ScreenController.m_Screens.GameOverScreen);
+        }
+       
     }
 
     public bool GetPlayerWinStatus() {

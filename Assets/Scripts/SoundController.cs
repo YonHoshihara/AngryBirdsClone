@@ -18,6 +18,7 @@ public class SoundController : MonoBehaviour
         else
         {
             Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
         m_AudioSource = GetComponent<AudioSource>();

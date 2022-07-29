@@ -70,4 +70,9 @@ public class Monster_Boss : MonoBehaviour
     {
         bossAnim.Play(aBoss);
     }
+
+    public bool GetDieStatus()
+    {
+        return _hasDied;
+    }
 }
